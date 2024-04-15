@@ -78,6 +78,7 @@ a.active, a:hover {
     .banner img {
         height: 300px;
         padding-left: 150px;
+        
     }
 
     .banner h2 {
@@ -164,14 +165,16 @@ a.active, a:hover {
         padding-left: 0%;
     }
 
-        .banner img {
-            height: 200px;
-            padding-left: 40px;
-        }
-
-        .banner p {
-            text-align: center;
-        }
+    .banner img {
+        height: 200px;
+        padding-left: 40px;
+    }
+    input[type="checkbox"]:checked ~ .banner .logo-banner img {
+        display: none;
+    }
+    .banner p {
+        text-align: center;
+    }
 
     .content-banner {
         margin-right: 0px;
@@ -183,7 +186,57 @@ a.active, a:hover {
         margin-top: 10px;
     }
 }
+/*-------------------------------PAGE LOGIN.HTML---------------------------------*/
+.login-container {
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    text-align: center;
+}
 
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-container label {
+    float: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #666;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(111, 96, 91);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-container p {
+    margin-top: 20px;
+    color: #666;
+}
+
+.login-container a {
+    color: rgb(142, 117, 108);
+    text-decoration: none;
+}
+/*---------------------------------------------FIN DE LA PAGE LOGIN---------------------------------------*/
 @media (max-width: 858px) {
 
     label.logo {
