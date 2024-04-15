@@ -1,69 +1,50 @@
 <?php
-/*
-	//ETAPE 1: Récupération à partir de la BD, des données de l'adhérent dont l'id est passé en URL
-	//			Les valeurs récupérées de la BD vont être affichées dans le formulaire ci-dessous
-	if(isset($_GET["identifiant"])){
-		try{
-			require("connexion.php");             
-			   
-			//Compléter ICI
-			
-			$conn= NULL;
-		}                 
-		catch(Exception $e){
-			die("Erreur : " . $e->getMessage());
-        }
-	}
+include 'DBcon.php';  // Informations de connexion
 
+$id = $_GET['id']; // ID de l'élément à modifier
 
-	//ETAPE 2: Mettre à jours les données de la BD selon les valeurs modifiées envoyées par le formulaire ci-dessous
-	if(isset($_POST["Modifier"])){
-		try{
-			require("connexion.php"); 
-			
-			//Compléter ICI
-			
-			$conn= NULL;		
-			header("Location:TP4.php");
-		}                 
-		catch(Exception $e){
-			die("Erreur : " . $e->getMessage());
-        }
-	}
-*/
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupérer les données du formulaire
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Préparer et exécuter la requête SQL pour mettre à jour l'élément
+        $sql = "UPDATE adherents SET Nom = ?, Prenom = ?, Email = ? WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$nom, $prenom, $email, $id]);
+
+        // Redirection vers la page de login
+        header("Location: modif.php");
+        exit;
+    } catch(PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
+    }
+}
 ?>
+<!-- Formulaire pour la modification -->
+<nav>	
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"> </i>
+        </label>
+        <label class="logo"> Rubine-moi </label>
+        <ul>
+            <li><a class="active" href="#"> Accueil </a></li>
+            <li><a href="#"> Membres </a></li>
+            <li><a href="#"> Découvrir </a></li>
+            <li><a href="#"> Contact </a></li>
+        </ul>
 
-<!-- Formulaire de modification -->
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <title>TP4 : web dynamique</title>
-        <meta charset="utf-8" />
-        <style>
-			body{padding:3%;}
-        </style>
-    </head>
-    <body>
-		<h1>Modifier un adhérent</h1>
-		<form action="modifier.php" method="post">
-			<fieldset>
-				<legend>Modifier un étudiant</legend>
-				<input type="hidden" id="id" name="id" value="<?php if(isset($ids)) { echo $ids; } ?>"><br/>
-				
-				<label for="nom">Nom : </label>
-				<input type="text" id="nom" name="nom" value="<?php if(isset($nom)) { echo $nom; } ?>"><br/>
-				
-				<label for="prenom">Prénom : </label>
-				<input type="text" id="prenom" name="prenom" value="<?php if(isset($prenom)) { echo $prenom; } ?>"><br/>
-				
-				<label for="email">Email : </label>
-				<input type="mail" id="email" name="email" value="<?php if(isset($email)) { echo $email; } ?>"><br/>
-				
-				<label for="dateN">Date de naissance: </label>
-				<input type="date" id="dateN" name="dateN" value="<?php if(isset($date)) { echo $date; } ?>"><br/>
-					
-				<input Type="submit" name="Modifier" value="Modifier">
-			</fieldset>
-		</form>
-	</body>
-</html>
+    </nav>
+<form method="post">
+    <!-- Champs du formulaire avec les valeurs pré-remplies -->
+    <input type="text" name="nom" value="Nom initial">
+    <input type="text" name="prenom" value="Prénom initial">
+    <input type="email" name="email" value="Email initial">
+    <button type="submit">Modifier</button>
+</form>

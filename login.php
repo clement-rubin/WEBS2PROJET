@@ -12,12 +12,14 @@
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-        <label class="logo">Rubine-moi</label>
+        <a href="index.html"><label class="logo"> Rubine-moi </label></a>
         <ul>
-            <li><a href="#">Accueil</a></li>
+            <li><a href="index.html">Accueil</a></li>
             <li><a href="#">Membres</a></li>
             <li><a href="#">Découvrir</a></li>
             <li><a href="#">Contact</a></li>
+            <li><a href="seconnecter.php">Se connecter</a></li>
+
         </ul>
     </nav>
 

@@ -27,7 +27,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="sec.css">
-    <title>Page de connexion</title>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"> </i>
+        </label>
+        <a href="index.html"><label class="logo"> Rubine-moi </label></a>
+        <ul>
+            <li><a class="active" href="#"> Accueil </a></li>
+            <li><a href="#"> Membres </a></li>
+            <li><a href="#"> Découvrir </a></li>
+            <li><a href="#"> Contact </a></li>
+            <li><a href="seconnecter.php">Se connecter</a></li>
+        </ul>
+
+    </nav>
 </head>
 <body>
     <div class="login-container">
