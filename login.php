@@ -26,19 +26,24 @@
             <fieldset>
                 <legend>Ajouter un adhérent</legend>
                 
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom"><br/>
+                <label  for="nom">Nom :</label>
+                <input placeholder="Nom" type="text" id="nom" name="nom"><br/>
                 
                 <label for="prenom">Prénom :</label>
-                <input type="text" id="prenom" name="prenom"><br/>
+                <input  placeholder="Prénom" type="text" id="prenom" name="prenom"><br/>
                 
                 <label for="email">Email :</label>
-                <input type="email" id="email" name="email"><br/>
+                <input  placeholder="Email" type="email" id="email" name="email"><br/>
                 
                 <label for="dateN">Date de naissance :</label>
-                <input type="date" id="dateN" name="dateN"><br/>
+                <input  type="date" id="dateN" name="dateN"><br/>
                 
                 <input type="submit" name="Ajouter" value="Ajouter">
+            </fieldset>
+            <fieldset class="dins">
+                <label>Déja membre ?</label>
+                <a href="seconnecter.php"><button>Cliquez-ici !</button></a>
+                
             </fieldset>
         </form>
     </div>
