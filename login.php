@@ -49,6 +49,5 @@
 $reqprep2 = "SELECT id,Nom,Prenom,Email,DateNaissance FROM adherents";
 $req2 = $conn->prepare($reqprep2);
 $req2->execute();
-/*---------------------------FIN PREP--------------------------------------------->
 ?>
 </html>
