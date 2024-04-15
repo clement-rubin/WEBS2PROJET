@@ -1,58 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Page de Connexion</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="login-container">
-        <h2>Connexion</h2>
-        <form action="login.php" method="post">
-            <div class="input-group">
-                <label for="username">Nom d'utilisateur:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Mot de passe:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" name="connect">Se connecter</button>
-        </form>
-    </div>
-</body>
-</html>
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['connect'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    
-    // Vérification des identifiants (exemple simple)
-    if ($username == "admin" && $password == "admin123") {
-        echo "<script>alert('Connexion réussie');</script>";
-    } else {
-        echo "<script>alert('Identifiant ou mot de passe incorrect');</script>";
-    }
-}
-/*gestion des utilisateur */
+// Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect the form data
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Special credentials for admin
-    $admin_user = "admin";
-    $admin_pass = "admin123";
+    // Special credentials for user login (assuming these are already registered users)
+    $valid_user = "user";
+    $valid_pass = "user123";
 
-    // Check if the entered credentials match the special admin credentials
-    if ($username === $admin_user && $password === $admin_pass) {
-        // Redirect to the admin page
-        header("Location: admin.php");
+    // Check if the entered credentials match the registered user credentials
+    if ($username === $valid_user && $password === $valid_pass) {
+        // Redirect to the user dashboard or appropriate page
+        header("Location: dashboard.php");
         exit;
     } else {
-        // Optional: Display an error message or redirect to the login page
+        // Display an error message
         $error = "Invalid username or password!";
     }
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sec.css">
+    <title>Page de connexion</title>
+</head>
+<body>
+    <div class="login-container">
+        <?php if (!empty($error)): ?>
+            <p class="error"><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+</body>
+</html>

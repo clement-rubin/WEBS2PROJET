@@ -42,7 +42,7 @@
             </fieldset>
             <fieldset class="dins">
                 <label>Déja membre ?</label>
-                <a href="seconnecter.php"><button>Cliquez-ici !</button></a>
+                <a href="seconnecter.php">Cliquez-ICI</a>
                 
             </fieldset>
         </form>
