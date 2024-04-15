@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the entered credentials match the registered user credentials
     if ($username === $valid_user && $password === $valid_pass) {
         // Redirect to the user dashboard or appropriate page
-        header("Location: dashboard.php");
+        header("Location: gestion.php");
         exit;
     } else {
         // Display an error message
