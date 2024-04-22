@@ -26,13 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="sec.css">
+    <link rel="stylesheet" href="style.css">
     <nav>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"> </i>
         </label>
-        <a href="index.html"><label class="logo"> Rubine-moi </label></a>
+        <a href="index.html"><label class="logo"> Rubine-moi     </label></a>
         <ul>
             <li><a class="active" href="#"> Accueil </a></li>
             <li><a href="#"> Membres </a></li>
