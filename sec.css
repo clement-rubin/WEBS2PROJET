@@ -1,309 +1,101 @@
-    /* Global styles and resets */
-    * {
-        padding: 0;
-        margin: 0;
-        text-decoration: none;
-        list-style: none;
-        box-sizing: border-box;
-        background: #efebf0;
+/* Navigation bar styles */
+nav {
+    background-color: #efebf0;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.navbar label.logo {
+    font-size: 22px;
+    color: #303030;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    padding: 0 10px;
+}
+
+.navbar ul li a {
+    color: #303030;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar ul li a:hover {
+    color: #605f5f;
+}
+
+/* Login container */
+.login-container {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input groups */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-group input:hover {
+    border-color: #888;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Error message */
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+/* Animation at page load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
     }
-
-    body {
-        font-family: 'Montserrat', sans-serif;
-        color: #303030;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    /* Navigation bar */
-    nav {
-        background: #efebf0;
-        height: 80px;
-    }
-
-    label.logo {
-        color: #303030;
-        font-size: 20px;
-        line-height: 80px;
-        padding: 0 100px;
-        font-weight: bold;
-    }
-
-    nav ul {
-        float: right;
-        margin-right: 20px;
-    }
-
-    nav ul li {
-        display: inline-block;
-        line-height: 80px;
-        margin: 0 5px;
-    }
-
-    nav ul li a {
-        color: #303030;
-        font-size: 17px;
-        padding: 7px 13px;
-        border-radius: 3px;
-        text-transform: uppercase;
-    }
-
-    a.active, a:hover {
-        background: #e0d7e2;
-        transition: .5s;
-    }
-
-    .checkbtn {
-        font-size: 30px;
-        color: #303030;
-        float: right;
-        line-height: 80px;
-        margin-right: 40px;
-        cursor: pointer;
-        display: none;
-    }
-
-    #check {
-        display: none;
-    }
-
-    /* Banner styling and animations */
-    .banner {
-        height: 500px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: height 0.3s ease-in-out;
-    }
-
-    .banner img {
-        height: 300px;
-        padding-left: 150px;
-        animation: slideInFromLeft 1.5s ease-out forwards;
-    }
-
-    .banner h2 {
-        font-size: 30px;
-        padding-right: 100px;
-    }
-
-    .banner p {
-        font-size: 22px;
-        padding-right: 75px;
-    }
-
-    .logo-banner {
-        text-align: left;
-        flex: 1;
-    }
-
-    .content-banner {
-        text-align: right;
-        margin-right: 100px;
-        flex: 1;
-    }
-
-    @keyframes slideInFromLeft {
-        0% {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-        100% {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 952px) {
-        label.logo {
-            font-size: 23px;
-            padding-left: 50px;
-        }
-
-        nav ul li a {
-            font-size: 16px;
-        }
-
-        .banner {
-            flex-direction: column;
-        }
-
-        .banner img {
-            height: 200px;
-            padding-left: 40px;
-        }
-
-        .banner p, .banner h2 {
-            text-align: center;
-            margin-left: 0;
-            padding-right: 20px;
-        }
-
-        .content-banner {
-            margin-right: 0;
-        }
-
-        .id_bouton {
-            margin-left: 30%;
-        }
-    }
-
-    /* Button styling */
-    .id_bouton {
-        display: flex;
-        margin-left: 45%;
-        padding: 10px 20px;
-        font-size: 16px;
-        text-align: center;
-        text-decoration: none;
-        border: 2px solid #c8beca;
-        border-radius: 5px;
-        background-color: #e0d7e2;
-        color: #FFFFFF;
-        cursor: pointer;
-    }
-
-    /* Adapted form container styling */
-    .form-container {
-        width: 100%;
-        max-width: 400px;
-        padding: 20px;
-        background-color: #ffffff;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        margin: 30px auto;
-        text-align: left;
-        transition: box-shadow 0.3s ease-in-out;
-    }
-
-    .form-container:hover {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .form-container fieldset {
-        border: 1px solid #ccc;
-        padding: 20px;
-    }
-
-    .form-container legend {
-        color: #f40;
-        font-weight: bold;
-    }
-
-    .form-container label {
-        display: block;
-        margin: 10px 0 5px;
-    }
-
-    .form-container input[type="text"],
-    .form-container input[type="email"],
-    .form-container input[type="date"] {
-        width: calc(100% - 20px);
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        transition: border-color 0.3s ease-in-out;
-    }
-
-    .form-container input[type="text"]:hover,
-    .form-container input[type="email"]:hover,
-    .form-container input[type="date"]:hover {
-        border-color: #f40;
-    }
-
-    .form-container input[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        background-color: #f40;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
-    }
-
-    .form-container input[type="submit"]:hover {
-        background-color: darken(#f40, 10%);
-    }
-    .dins{
-        align-items: center;
-    }
-    /* Base Styles */
-    form {
-        margin: auto;
-        margin-top: 10%;
-        background: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        width: 100%;
-        max-width: 360px; /* Largeur maximale pour le formulaire */
-    }
-
-    input[type="text"], input[type="password"], input[type="email"] {
-        width: 100%;
-        padding: 10px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    button {
-        width: 100%;
-        padding: 12px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        form {
-            padding: 15px;
-            box-shadow: none;
-        }
-
-        input[type="text"], input[type="password"], input[type="email"], button {
-            padding: 10px;
-        }
-    }
-
-
-
-    /* Further responsive handling */
-    @media (max-width: 858px) {
-        .checkbtn {
-            display: block;
-        }
-
-        ul {
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-            top: 80px;
-            left: -100%;
-            transition: all .5s;
-        }
-
-        #check:checked ~ ul {
-            left: 0;
-        }
-
-        nav ul li {
-            display: block;
-            margin: 50px 0;
-            line-height: 30px;
-        }
-
-        nav ul li a {
-            font-size: 20px;
-        }
-    }
+body {
+    animation: fadeIn 1s ease-out;
+}

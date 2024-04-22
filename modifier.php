@@ -1,50 +1,73 @@
 <?php
-include 'DBcon.php';  // Informations de connexion
+include 'DBcon.php';
 
-$id = $_GET['id']; // ID de l'élément à modifier
+// Fetch user details
+$identifiant = $_GET["identifiant"] ?? null;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les données du formulaire
+if ($identifiant) {
+    try {
+        $stmt = $conn->prepare("SELECT * FROM utilisateurs WHERE id = ?");
+        $stmt->bindParam(1, $identifiant, PDO::PARAM_INT);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if (!$user) {
+            echo "<p>Utilisateur non trouvé.</p>";
+        }
+    } catch(Exception $e) {
+        die("Erreur de connexion : " . $e->getMessage());
+    }
+}
+
+// Update user details
+if (isset($_POST["Modifier"]) && !empty($_POST["id"])) {
+    $id = $_POST['id'];
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
+    $dateN = $_POST['dateN'];
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // Préparer et exécuter la requête SQL pour mettre à jour l'élément
-        $sql = "UPDATE adherents SET Nom = ?, Prenom = ?, Email = ? WHERE id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$nom, $prenom, $email, $id]);
-
-        // Redirection vers la page de login
-        header("Location: modif.php");
-        exit;
-    } catch(PDOException $e) {
-        echo "Erreur : " . $e->getMessage();
+        $stmt = $conn->prepare("UPDATE utilisateurs SET Nom = ?, Prenom = ?, Email = ?, date_naissance = ? WHERE id = ?");
+        $stmt->bindParam(1, $nom);
+        $stmt->bindParam(2, $prenom);
+        $stmt->bindParam(3, $email);
+        $stmt->bindParam(4, $dateN);
+        $stmt->bindParam(5, $id, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        header("Location: gestion.php"); // Redirect to management page
+        exit();
+    } catch(Exception $e) {
+        die("Erreur de mise à jour : " . $e->getMessage());
     }
 }
 ?>
-<!-- Formulaire pour la modification -->
-<nav>	
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"> </i>
-        </label>
-        <label class="logo"> Rubine-moi </label>
-        <ul>
-            <li><a class="active" href="#"> Accueil </a></li>
-            <li><a href="#"> Membres </a></li>
-            <li><a href="#"> Découvrir </a></li>
-            <li><a href="#"> Contact </a></li>
-        </ul>
-
-    </nav>
-<form method="post">
-    <!-- Champs du formulaire avec les valeurs pré-remplies -->
-    <input type="text" name="nom" value="Nom initial">
-    <input type="text" name="prenom" value="Prénom initial">
-    <input type="email" name="email" value="Email initial">
-    <button type="submit">Modifier</button>
-</form>
+<html>
+    <head>
+        <title>Ajouter un adhérent</title>
+    </head>
+    <body>
+        <h2>Ajouter un adhérent</h2>
+        <form name="ajout" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <fieldset>
+                <legend>Ajouter un adhérent</legend>
+                
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required><br/>
+                
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" required><br/>
+                
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required><br/>
+                
+                <label for="dateN">Date de naissance :</label>
+                <input type="date" id="dateN" name="dateN" required><br/>
+                
+                <input type="hidden" name="id" value="<?php echo $identifiant; ?>">
+                <input type="submit" name="Modifier" value="Modifier">
+            </fieldset>
+        </form>
+    </body>
+</html>

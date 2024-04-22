@@ -50,12 +50,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endif; ?>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div class="input-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="username">Nom d'utilisateur:</label>
+                <input type="text" placeholder="Nom d'utilisateur" id="username" name="username" required>
             </div>
             <div class="input-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="password">Mot de passe :</label>
+                <input type="password" placeholder="Mot de passe" id="password" name="password" required>
             </div>
             <button type="submit">Se connecter</button>
         </form>
