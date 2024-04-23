@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="seconnecter.css">
+    <title>Se connecter</title>
 </head>
 <body>
     <nav>
@@ -51,19 +52,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <!-- Icon -->
             <div class="fadeIn first">
-                <img src="images/love-geader.png" id="icon" alt="User Icon" />
+                <a  class="logo-form" href="index.html"><img src="images/love-geader.png" id="icon" alt="User Icon" /></a>
             </div>
 
             <!-- Login Form -->
             <form method="post">
                 <input type="text" id="login" class="fadeIn second" name="username" placeholder="connexion">
                 <input type="password" id="password" class="fadeIn third" name="password" placeholder="mot de passe">
-                <input type="submit" class="fadeIn fourth" value="Log In">
+                <input type="submit" class="fadeIn fourth" value="Se connecter">
             </form>
 
             <!-- Remind Password -->
             <div id="formFooter">
-                <a class="underlineHover" href="#">Mot de passe oublié ?</a>
+                <a class="underlineHover" href="modifier.php">Mot de passe oublié ?</a>
             </div>
         </div>
     </div>

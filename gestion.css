@@ -1,3 +1,43 @@
+/* Styles de la barre de navigation */
+nav {
+    background-color: #ff6347; /* Assurez-vous que cette couleur est la même que sur la page index */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    padding: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Ajout des médias queries si nécessaire pour la responsivité */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+    nav ul li {
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+/* Styles globaux */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f9f9f9;
@@ -10,6 +50,7 @@ h1 {
     text-align: center;
 }
 
+/* Styles de tableaux */
 table {
     width: 80%;
     margin: 20px auto;

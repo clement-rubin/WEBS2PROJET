@@ -15,7 +15,7 @@ body {
 
 /* Navigation bar */
 nav {
-    background: #FFFFFF;
+  background: #efebf0;
     height: 80px;
 }
 
@@ -25,17 +25,21 @@ label.logo {
     line-height: 80px;
     padding: 0 100px;
     font-weight: bold;
+    background: #efebf0;
 }
 
 nav ul {
     float: right;
     margin-right: 20px;
+    background: #efebf0;
+    height: 100%;
 }
 
 nav ul li {
     display: inline-block;
     line-height: 80px;
     margin: 0 5px;
+    background: #efebf0;
 }
 
 nav ul li a {
@@ -44,10 +48,15 @@ nav ul li a {
     padding: 7px 13px;
     border-radius: 3px;
     text-transform: uppercase;
+    background: #efebf0;
 }
 
 a.active, a:hover {
     background: #e0d7e2;
+    transition: .5s;
+}
+.logo-form:active,.logo-form:hover {
+    background:#FFFFFF;
     transition: .5s;
 }
 
@@ -75,7 +84,7 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
+  height: 100vh;  
 }
 
 a {
@@ -107,6 +116,7 @@ h2 {
   width: 100%;
   min-height: 100%;
   padding: 20px;
+  background: #efebf0;
 }
 
 #formContent {
@@ -124,8 +134,8 @@ h2 {
 }
 
 #formFooter {
-  background-color: #f6f6f6;
-  border-top: 1px solid #dce8f1;
+  background-color: whitesmoke;
+  border-top: 1px solid whitesmoke;
   padding: 25px;
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;
@@ -343,6 +353,9 @@ input[type=password] {
 
 .underlineHover:hover:after{
   width: 100%;
+}
+.underlineHover{
+  background: whitesmoke;
 }
 
 
