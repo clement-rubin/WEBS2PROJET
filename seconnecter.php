@@ -26,29 +26,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="seconecter.css">
+    <link rel="stylesheet" href="seconnecter.css    ">
+</head>
+<body>
     <nav>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
-            <i class="fas fa-bars"> </i>
+            <i class="fas fa-bars"></i>
         </label>
-        <a href="index.html"><label class="logo"> Rubine-moi     </label></a>
+        <label class="logo">Rubine-moi</label>
         <ul>
-            <li><a class="active" href="#"> Accueil </a></li>
-            <li><a href="#"> Membres </a></li>
-            <li><a href="#"> Découvrir </a></li>
-            <li><a href="#"> Contact </a></li>
+            <li><a class="active" href="#">Accueil</a></li>
+            <li><a href="#">Membres</a></li>
+            <li><a href="#">Découvrir</a></li>
+            <li><a href="#">Contact</a></li>
             <li><a href="seconnecter.php">Se connecter</a></li>
         </ul>
-
     </nav>
-</head>
-<body>
     <div class="login-container">
         <?php if (!empty($error)): ?>
             <p class="error"><?= htmlspecialchars($error) ?></p>
         <?php endif; ?>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div class="input-group">
                 <label for="username">Nom d'utilisateur:</label>
                 <input type="text" placeholder="Nom d'utilisateur" id="username" name="username" required>
