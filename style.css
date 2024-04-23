@@ -1,4 +1,3 @@
-/* Global styles and resets */
 * {
     padding: 0;
     margin: 0;
@@ -23,7 +22,7 @@ label.logo {
     color: #303030;
     font-size: 20px;
     line-height: 80px;
-    padding: 0 100px;
+    padding: 0 50px;
     font-weight: bold;
 }
 
@@ -65,9 +64,9 @@ a.active, a:hover {
     display: none;
 }
 
-/* Banner styling and animations */
+/* page d'accueil - paul */
 .banner {
-    height: 500px;
+    height: 350px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -76,8 +75,8 @@ a.active, a:hover {
 }
 
 .banner img {
-    height: 300px;
-    padding-left: 150px;
+    height: 250px;
+    padding-left: 25px;
     animation: slideInFromLeft 1.5s ease-out forwards;
 }
 
@@ -113,24 +112,87 @@ a.active, a:hover {
     }
 }
 
-/* Responsive adjustments */
+/* div avis du site */
+
+.avis {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.avis h1 {
+    font-size: 20px;
+}
+
+.avis-container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.avis-slide {
+    display: none;
+    padding: 20px;
+}
+
+/* Animation pour le diaporama */
+@keyframes slide {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Afficher un avis à la fois */
+.avis-slide:first-child {
+    display: block;
+    animation: slide 4s infinite; /* Changer le temps ici */
+}
+
+/* Footer de la page.*/
+
+footer {
+    background-color: #efebf0;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reseaux-sociaux a {
+    margin-right: 10px;
+    color: #303030;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.cgu a {
+    color: #303030;
+    text-decoration: none;
+}
+
+
+/* Responsive pour vue ordinateur */
 @media (max-width: 952px) {
     label.logo {
         font-size: 23px;
-        padding-left: 50px;
+        padding-left: 25px;
     }
 
     nav ul li a {
         font-size: 16px;
     }
-
+    
     .banner {
         flex-direction: column;
     }
 
     .banner img {
         height: 200px;
-        padding-left: 40px;
     }
 
     .banner p, .banner h2 {
@@ -144,14 +206,23 @@ a.active, a:hover {
     }
 
     .id_bouton {
-        margin-left: 30%;
+        margin-left: 25%;
     }
+
+    @keyframes slideInFromLeft {
+        /* permet de supprimer l'image qui se met automatiquement lors de l'ouverture du menu. */
+    }
+
+    nav ul li a {
+        padding-left: 70px;
+    }
+
 }
 
-/* Button styling */
 .id_bouton {
     display: flex;
-    margin-left: 45%;
+    margin-left: auto;
+    margin-right: auto; 
     padding: 10px 20px;
     font-size: 16px;
     text-align: center;
@@ -161,6 +232,7 @@ a.active, a:hover {
     background-color: #e0d7e2;
     color: #FFFFFF;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 /* Adapted form container styling */
@@ -230,7 +302,7 @@ a.active, a:hover {
 }
 
 
-/* Further responsive handling */
+/* Modification pour les tailles d'écran inférier ou égale à 858px */
 @media (max-width: 858px) {
     .checkbtn {
         display: block;
@@ -249,9 +321,13 @@ a.active, a:hover {
         left: 0;
     }
 
+    #check:checked ~ .banner .logo-banner img {
+        display: none;
+    }
+
     nav ul li {
         display: block;
-        margin: 50px 0;
+        margin: 30px 0;
         line-height: 30px;
     }
 
