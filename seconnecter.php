@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="seconnecter.css    ">
+    <link rel="stylesheet" href="seconnecter.css">
 </head>
 <body>
     <nav>
@@ -36,28 +36,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </label>
         <label class="logo">Rubine-moi</label>
         <ul>
-            <li><a class="active" href="#">Accueil</a></li>
+            <li><a href="#">Accueil</a></li>
             <li><a href="#">Membres</a></li>
             <li><a href="#">Découvrir</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="seconnecter.php">Se connecter</a></li>
         </ul>
     </nav>
-    <div class="login-container">
-        <?php if (!empty($error)): ?>
-            <p class="error"><?= htmlspecialchars($error) ?></p>
-        <?php endif; ?>
-        <form method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <div class="input-group">
-                <label for="username">Nom d'utilisateur:</label>
-                <input type="text" placeholder="Nom d'utilisateur" id="username" name="username" required>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <h2 class="active"> S'inscrire</h2>
+            <h2 class="inactive underlineHover">Se connecter </h2>
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="images/love-geader.png" id="icon" alt="User Icon" />
             </div>
-            <div class="input-group">
-                <label for="password">Mot de passe :</label>
-                <input type="password" placeholder="Mot de passe" id="password" name="password" required>
+
+            <!-- Login Form -->
+            <form method="post">
+                <input type="text" id="login" class="fadeIn second" name="username" placeholder="connexion">
+                <input type="password" id="password" class="fadeIn third" name="password" placeholder="mot de passe">
+                <input type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+
+            <!-- Remind Password -->
+            <div id="formFooter">
+                <a class="underlineHover" href="#">Mot de passe oublié ?</a>
             </div>
-            <button type="submit">Se connecter</button>
-        </form>
+        </div>
     </div>
 </body>
 </html>
